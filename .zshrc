@@ -21,19 +21,33 @@ plugins=(asdf git rails docker docker-compose)
 
 source $ZSH/oh-my-zsh.sh
 
+# set default editor to be vscode
+export EDITOR="code"
+
 # Quality aliases
 alias rspecdiff='bin/rspec $(gss_diff | grep spec.rb)'
+alias rsof='bin/rspec --only-failures'
 alias rubocopdiff='rubocop -a $(gss_diff | grep .rb)'
 alias reekdiff='reek $(gss_diff)'
 alias branchdiff='rubocop -a $(git_diff | grep -v "erb" | grep .rb)'
 
 # Heroku madness
-alias hero_personal='heroku accounts:set personal'
-alias hero_work='heroku accounts:set work'
-alias hero_console='heroku run console --app $1'
-alias hero_bash='heroku run bash --app $1'
-alias hero_logs='heroku logs --tail --app $1'
-alias hero_new_relic='heroku addons:open newrelic --app $1'
+BE_PROD='backend-knok'
+BE_QA='knok-qa'
+BE_STAGING='knok-backend-test'
+
+alias hr='heroku'
+
+alias hr_personal='hr accounts:set personal'
+alias hr_work='hr accounts:set work'
+alias hrcp='hr run console --app $BE_PROD'
+alias hrcqa='hr run console --app $BE_QA'
+alias hrcs='hr run console --app $BE_STAGING'
+alias hrc='hr run console --app $1'
+alias hrbash='hr run bash --app $1'
+alias hrlogs='hr logs --tail --app $1'
+alias hr_new_relic='hr addons:open newrelic --app $1'
+alias hrr='heroku releases -a $1'
 
 # github
 alias prs='gh pr status'
@@ -56,6 +70,9 @@ alias ls='ls -l'
 # rust
 alias rust='rustup'
 
+# act
+alias act='act --container-architecture linux/amd64 $1'
+
 # Git helpers
 gss_diff() {
   (gss | grep ? | cut -c 3-) && (gss | grep M | cut -c 3-)
@@ -75,7 +92,7 @@ git_diff() {
 source ~/.oh-my-zsh/plugins/zsh-autocomplete/zsh-autocomplete.plugin.zsh
 
 # heroku autocomplete setup
-HEROKU_AC_ZSH_SETUP_PATH=/Users/danielveloso/Library/Caches/heroku/autocomplete/zsh_setup && test -f $HEROKU_AC_ZSH_SETUP_PATH && source $HEROKU_AC_ZSH_SETUP_PATH;
+HEROKU_AC_ZSH_SETUP_PATH=/Users/jmonteiro/Library/Caches/heroku/autocomplete/zsh_setup && test -f $HEROKU_AC_ZSH_SETUP_PATH && source $HEROKU_AC_ZSH_SETUP_PATH;
 
 export PATH=/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin && clear
 
