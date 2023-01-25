@@ -1,0 +1,2 @@
+alias srcmux='tmux source ~/.tmux.conf'
+alias mux='tmux'

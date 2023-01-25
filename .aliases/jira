@@ -1,0 +1,7 @@
+alias jirame='jira issue list -a$(jira me) -s"~Done"'
+alias jirameall='jira issue list -a$(jira me)'
+alias jirahist='jira issue list --history'
+alias jiramep='jirame -s "In Progress"'
+alias jiramedo='jirame -s "To Do"'
+alias jiramer='jirame -s "Review"'
+alias jiramerp='jirame -s "Reopen"'

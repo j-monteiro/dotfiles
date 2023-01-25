@@ -1,0 +1,5 @@
+alias gf='git fetch'
+alias gw='git worktree'
+alias gwa='git worktree add'
+alias gwd='git worktree remove'
+alias gst='git status -s -u'

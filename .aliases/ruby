@@ -1,0 +1,6 @@
+alias rspecdiff='bin/rspec $(gss_diff | grep spec.rb)'
+alias rsof='bin/rspec --only-failures'
+alias rubocopdiff='rubocop -a $(gss_diff | grep .rb)'
+alias reekdiff='reek $(gss_diff)'
+alias branchdiff='rubocop -a $(git_diff | grep -v "erb" | grep .rb)'
+alias rcop='rubocop'
